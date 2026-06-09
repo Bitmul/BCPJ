@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>경기부천나눔지역자활센터 - 메인</title>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<script>
+    // 탭 데이터 정의 (임의의 내용)
+    const tabData = {
+        'general': [
+            { icon: 'bi-house-door', text: '자활사업 바로가기' },
+            { icon: 'bi-piggy-bank', text: '자산형성지원사업 바로가기' },
+            { icon: 'bi-file-earmark-check', text: '게이트웨이 바로가기' }
+        ],
+        'near-poor': [
+            { icon: 'bi-person-heart', text: '차상위 특례 지원' },
+            { icon: 'bi-briefcase', text: '희망근로 안내' },
+            { icon: 'bi-info-circle', text: '혜택 알아보기' }
+        ],
+        'youth': [
+            { icon: 'bi-mortarboard', text: '청년내일저축계좌' },
+            { icon: 'bi-lightning', text: '청년 자활 도전' },
+            { icon: 'bi-stars', text: '꿈 설계 상담' }
+        ],
+        'migrant': [
+            { icon: 'bi-globe', text: '정착 지원 서비스' },
+            { icon: 'bi-book', text: '언어 및 문화 교육' },
+            { icon: 'bi-hand-thumbs-up', text: '취업 연계 프로그램' }
+        ],
+        'asset': [
+            { icon: 'bi-graph-up-arrow', text: '희망키움통장' },
+            { icon: 'bi-safe', text: '내일키움통장' },
+            { icon: 'bi-coin', text: '목돈 마련 플랜' }
+        ]
+    };
+
+    function changeTab(type, element) {
+        // 1. 모든 메뉴의 하이라이트 제거 후 클릭된 것만 추가
+        const links = document.querySelectorAll('.tab-link');
+        links.forEach(link => link.classList.remove('active'));
+        element.classList.add('active');
+
+        // 2. 콘텐츠 변경
+        const contentArea = document.getElementById('tabContent');
+        const data = tabData[type];
+        
+        let html = '';
+        data.forEach(item => {
+            html += `
+                <div class="service-card fade-in">
+                    <i class="bi ${item.icon}"></i>
+                    <span>${item.text}</span>
+                </div>
+            `;
+        });
+        
+        contentArea.innerHTML = html;
+    }
+</script>
+<body>
+	<div class="nav-container">
+		<nav
+			class="navbar navbar-expand-lg navbar-dark bg-primary-bcn shadow-sm sticky-top">
+			<div class="container">
+				<a class="navbar-brand fw-bold d-flex align-items-center" href="/">
+					<img th:src="@{/images/부천나눔.webp}" alt="부천나눔 로고"
+					class="d-inline-block align-text-top me-2 logo-img">
+				</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNav">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav ms-auto">
+						<li class="nav-item"><a class="nav-link active" href="/">홈</a></li>
+						<li class="nav-item"><a class="nav-link" th:href="@{/result}">데이터
+								목록</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/register}">데이터 등록</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="sub-menu-bar d-none d-lg-block">
+			<div class="container">
+				<ul class="nav-menu-list">
+					<li class="nav-item-main"><a href="#" class="nav-link-main">부천나눔</a>
+						<ul class="dropdown-custom">
+							<li><a th:href="@{/greeting}">인사말</a></li>
+							<li><a href="#">연혁</a></li>
+							<li><a href="#">조직도</a></li>
+						</ul></li>
+					<li class="nav-item-main"><a href="#" class="nav-link-main">자활사업</a>
+						<ul class="dropdown-custom">
+							<li><a href="#">사업안내</a></li>
+							<li><a href="#">신청방법</a></li>
+						</ul></li>
+					<li class="nav-item-main"><a href="#" class="nav-link-main">사례관리</a>
+						<ul class="dropdown-custom">
+							<li><a href="#">관리대상</a></li>
+							<li><a href="#">지원체계</a></li>
+						</ul></li>
+					<li class="nav-item-main"><a href="#" class="nav-link-main">자활근로사업단</a>
+						<ul class="dropdown-custom">
+							<li><a href="#">사업단 소개</a></li>
+							<li><a href="#">운영 현황</a></li>
+						</ul></li>
+					<li class="nav-item-main"><a href="#" class="nav-link-main">자활기업</a>
+						<ul class="dropdown-custom">
+							<li><a href="#">기업 목록</a></li>
+							<li><a href="#">창업 안내</a></li>
+						</ul></li>
+					<li class="nav-item-main"><a href="#" class="nav-link-main">돌봄사업</a>
+						<ul class="dropdown-custom">
+							<li><a href="#">노인돌봄</a></li>
+							<li><a href="#">장애인돌봄</a></li>
+						</ul></li>
+					<li class="nav-item-main"><a href="#" class="nav-link-main">직영사업</a>
+						<ul class="dropdown-custom">
+							<li><a href="#">희망도시락</a></li>
+							<li><a href="#">나눔가게</a></li>
+						</ul></li>
+					<li class="nav-item-main"><a href="#" class="nav-link-main">열린마당</a>
+						<ul class="dropdown-custom">
+							<li><a href="#">공지사항</a></li>
+							<li><a href="#">포토갤러리</a></li>
+							<li><a href="#">자유게시판</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<header class="hero-section text-center">
+		<div id="mainCarousel" class="carousel slide carousel-fade shadow-sm"
+			data-bs-ride="carousel">
+
+			<div class="carousel-indicators">
+				<button type="button" data-bs-target="#mainCarousel"
+					data-bs-slide-to="0" class="active"></button>
+				<button type="button" data-bs-target="#mainCarousel"
+					data-bs-slide-to="1"></button>
+				<button type="button" data-bs-target="#mainCarousel"
+					data-bs-slide-to="2"></button>
+			</div>
+
+			<div class="carousel-inner main-slider">
+				<div class="carousel-item active" data-bs-interval="5000">
+					<img
+						src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070"
+						class="d-block w-100" alt="슬라이드 1">
+					<div class="carousel-caption d-none d-md-block">
+						<h2 class="animate__animated animate__fadeInDown">자활사업</h2>
+						<p class="fs-5">자활사업은 근로 능력이 있는 저소득층 주민의 근로능력과 의욕을 높여 빈곤에서 탈출
+							할 수 있도록함께 만들어가는 사업입니다.</p>
+					</div>
+				</div>
+
+				<div class="carousel-item" data-bs-interval="5000">
+					<img
+						src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2048"
+						class="d-block w-100" alt="슬라이드 2">
+					<div class="carousel-caption d-none d-md-block">
+						<h2>돌봄사업</h2>
+						<p class="fs-5">돌봄이 필요한 취약계층 대상에게 최고의 돌봄사회서비스를 제공합니다.</p>
+					</div>
+				</div>
+
+				<div class="carousel-item" data-bs-interval="5000">
+					<img
+						src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
+						class="d-block w-100" alt="슬라이드 3">
+					<div class="carousel-caption d-none d-md-block">
+						<h2>청년자립도전사업</h2>
+						<p class="fs-5">청년자립도전사업에 대한 지원 서비스를 확인하실 수 있습니다.</p>
+					</div>
+				</div>
+			</div>
+
+			<button class="carousel-control-prev" type="button"
+				data-bs-target="#mainCarousel" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">이전</span>
+			</button>
+			<button class="carousel-control-next" type="button"
+				data-bs-target="#mainCarousel" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">다음</span>
+			</button>
+		</div>
+		<div class="container">
+			<div class="quick-menu-section">
+				<a href="#" class="quick-menu-item"> <i
+					class="bi bi-info-circle quick-menu-icon"></i> <span
+					class="quick-menu-text">자활사례관리사업</span>
+				</a> <a href="#" class="quick-menu-item"> <i
+					class="bi bi-people quick-menu-icon"></i> <span
+					class="quick-menu-text">자산형성지원 통장사업</span>
+				</a> <a href="#" class="quick-menu-item"> <i
+					class="bi bi-calendar-check quick-menu-icon"></i> <span
+					class="quick-menu-text">프로그램 신청</span>
+				</a> <a href="#" class="quick-menu-item"> <i
+					class="bi bi-chat-dots quick-menu-icon"></i> <span
+					class="quick-menu-text">취업 창업 지원</span>
+				</a> <a href="#" class="quick-menu-item"> <i
+					class="bi bi-geo-alt quick-menu-icon"></i> <span
+					class="quick-menu-text">자활기업 유형별 사업</span>
+				</a>
+			</div>
+			<div class="info-banner-section">
+				<div class="banner-contact">
+					<div class="contact-group">
+						<h3 class="contact-label">대표전화</h3>
+						<span class="contact-number">032-323-9946~7</span>
+					</div>
+					<div class="contact-group">
+						<h3 class="contact-label">상담문의</h3>
+						<span class="contact-number">032-323-9946</span>
+					</div>
+				</div>
+
+				<div class="banner-notice">
+					<div class="notice-title-box">
+						<h5 class="fw-bold">공지사항</h5>
+					</div>
+					<ul class="notice-content-list">
+						<li
+							class="notice-item d-flex justify-content-between align-items-center">
+							<a href="#">[자활근로사업] 2026년 자활근로 사업 참여자 모집 안내</a> <span
+							class="small opacity-75 ms-2">2026.04.21</span>
+						</li>
+						<li
+							class="notice-item d-flex justify-content-between align-items-center">
+							<a href="#">[채용공고] 자활사례관리사업 실무자 채용 공고 💾</a> <span
+							class="small opacity-75 ms-2">2026.04.21</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="service-tab-section">
+				<h2 class="service-title">대상자별 서비스</h2>
+
+				<div class="tab-container">
+					<ul class="tab-menu">
+						<li><a class="tab-link active"
+							onclick="changeTab('general', this)">일반 · 조건부수급자</a></li>
+						<li><a class="tab-link"
+							onclick="changeTab('near-poor', this)">차상위자</a></li>
+						<li><a class="tab-link" onclick="changeTab('youth', this)">청년</a></li>
+						<li><a class="tab-link" onclick="changeTab('migrant', this)">북한이탈주민</a></li>
+						<li><a class="tab-link" onclick="changeTab('asset', this)">자산형성지원사업</a></li>
+					</ul>
+
+					<div class="tab-content-area" id="tabContent">
+						<div class="service-card">
+							<i class="bi bi-house-door"></i> <span>자활사업<br>바로가기
+							</span>
+						</div>
+						<div class="service-card">
+							<i class="bi bi-piggy-bank"></i> <span>자산형성지원사업<br>바로가기
+							</span>
+						</div>
+						<div class="service-card">
+							<i class="bi bi-file-earmark-check"></i> <span>게이트웨이<br>바로가기
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="location-section">
+				<div class="location-container">
+					<div class="location-card">
+						<div class="card-bg"
+							style="background-image: url('https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=2070');"></div>
+						<div class="card-content">
+							<h3 class="card-title">토닥토닥</h3>
+							<p class="card-info">
+								주소: 부천시 부천로122번길 54<br> 전화: 032-654-9946
+							</p>
+						</div>
+					</div>
+
+					<div class="location-card">
+						<div class="card-bg"
+							style="background-image: url('https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=2070');"></div>
+						<div class="card-content">
+							<h3 class="card-title">토닥토닥 오정공원점</h3>
+							<p class="card-info">
+								주소: 부천시 오정구 상오정로 183<br> 전화: 032-678-9946
+							</p>
+						</div>
+					</div>
+
+					<div class="location-card">
+						<div class="card-bg"
+							style="background-image: url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=2070&auto=format&fit=crop');"></div>
+						<div class="card-content">
+							<h3 class="card-title">토닥토닥 부천심곡본동점</h3>
+							<p class="card-info">
+								주소: 부천시 소사구 경인로224번길 36<br> 전화: 032-654-9946
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<p class="hero-subtitle">게시판 테스트용 임시섹션</p>
+			<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+				<a th:href="@{/data/result}" class="btn btn-primary-bcn btn-lg px-4">데이터
+					확인하기</a> <a th:href="@{/data/register}"
+					class="btn btn-outline-secondary btn-lg px-4">새 데이터 등록</a>
+			</div>
+		</div>
+	</header>
+
+	<footer class="footer">
+		<div class="container text-center">
+			<p class="small">(14713) 부천시 경인로224번길 36, 3층 | 대표전화 :
+				032-323-9946~7 | 팩스 : 032-323-9949</p>
+			<p class="small">개인정보처리방침 | 이용약관 | E-mail 무단수집거부 | 사이트맵</p>
+			<p class="small">&copy;Copyright © 부천나눔지역자활센터 . All rights
+				Reserved.</p>
+		</div>
+	</footer>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div>
+	<nav
+		class="navbar navbar-expand-lg navbar-dark bg-primary-bcn shadow-sm sticky-top">
+		<div class="container">
+			<a class="navbar-brand fw-bold d-flex align-items-center" href="/">
+				<img th:src="@{/images/부천나눔.webp}" alt="부천나눔 로고"
+				class="d-inline-block align-text-top me-2 logo-img">
+			</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link active" href="/">홈</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/result}">데이터
+							목록</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/register}">데이터 등록</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="sub-menu-bar d-none d-lg-block">
+		<div class="container">
+			<ul class="nav-menu-list">
+				<li class="nav-item-main"><a href="#" class="nav-link-main">부천나눔</a>
+					<ul class="dropdown-custom">
+						<li><a th:href="@{/greeting}">인사말</a></li>
+						<li><a href="#">연혁</a></li>
+						<li><a href="#">조직도</a></li>
+					</ul></li>
+				<li class="nav-item-main"><a href="#" class="nav-link-main">자활사업</a>
+					<ul class="dropdown-custom">
+						<li><a href="#">사업안내</a></li>
+						<li><a href="#">신청방법</a></li>
+					</ul></li>
+				<li class="nav-item-main"><a href="#" class="nav-link-main">사례관리</a>
+					<ul class="dropdown-custom">
+						<li><a href="#">관리대상</a></li>
+						<li><a href="#">지원체계</a></li>
+					</ul></li>
+				<li class="nav-item-main"><a href="#" class="nav-link-main">자활근로사업단</a>
+					<ul class="dropdown-custom">
+						<li><a href="#">사업단 소개</a></li>
+						<li><a href="#">운영 현황</a></li>
+					</ul></li>
+				<li class="nav-item-main"><a href="#" class="nav-link-main">자활기업</a>
+					<ul class="dropdown-custom">
+						<li><a href="#">기업 목록</a></li>
+						<li><a href="#">창업 안내</a></li>
+					</ul></li>
+				<li class="nav-item-main"><a href="#" class="nav-link-main">돌봄사업</a>
+					<ul class="dropdown-custom">
+						<li><a href="#">노인돌봄</a></li>
+						<li><a href="#">장애인돌봄</a></li>
+					</ul></li>
+				<li class="nav-item-main"><a href="#" class="nav-link-main">직영사업</a>
+					<ul class="dropdown-custom">
+						<li><a href="#">희망도시락</a></li>
+						<li><a href="#">나눔가게</a></li>
+					</ul></li>
+				<li class="nav-item-main"><a href="#" class="nav-link-main">열린마당</a>
+					<ul class="dropdown-custom">
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">포토갤러리</a></li>
+						<li><a href="#">자유게시판</a></li>
+					</ul></li>
+			</ul>
+		</div>
+	</div>
+</div>
+</html>

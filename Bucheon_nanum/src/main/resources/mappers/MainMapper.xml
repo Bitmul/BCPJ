@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bcn.nn.main.repository.MainMapper">
+
+	<select id="getData" resultType="com.bcn.nn.main.domain.DataVO">
+		SELECT * FROM t_table ORDER BY dataNo DESC
+	</select>
+	
+	<select id="getDataOne" resultType="com.bcn.nn.main.domain.DataVO">
+		SELECT * FROM t_table WHERE dataNo = #{dataNo}
+	</select>
+
+	<insert id="insertData">
+		INSERT INTO t_table (testString)
+		VALUES (#{testString})
+	</insert>
+
+	<update id="updateData">
+		UPDATE t_table SET testString = #{testString} WHERE dataNo = #{dataNo}
+	</update>
+
+	<delete id="deleteData">
+		DELETE FROM t_table WHERE dataNo = #{dataNo}
+	</delete>
+</mapper>
